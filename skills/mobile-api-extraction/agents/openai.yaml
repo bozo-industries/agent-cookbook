@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mobile API Extraction"
+  short_description: "Trace private mobile and web API behavior"
+  default_prompt: "Use $mobile-api-extraction to trace a user-owned client API safely and produce a redacted evidence report."
