@@ -4,6 +4,7 @@
 # Track only the portable global instructions.
 !/.gitignore
 !/AGENTS.md
+!/README.md
 !/commit.md
 !/transport.md
 
