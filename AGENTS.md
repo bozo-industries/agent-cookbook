@@ -1,5 +1,11 @@
 # Global Agent Instructions
 
+## Document Freshness
+
+At the start of every task, before implementation or any mutation, identify the local Markdown instructions and reference documents that may guide the work. Before relying on each document, perform a targeted read-only freshness check against that exact file on its known GitHub upstream and branch. For this cookbook, the canonical upstream is `bozo-industries/agent-cookbook` on `master`. For project documents, use an explicitly known source mapping or derive the repository, branch, and relative path from the local Git metadata when available.
+
+Never assume the local directory is a Git clone. Do not run a broad pull, fetch, checkout, reset, repository scan, or bulk synchronization for this check. Query only the individual GitHub file through the API or raw-file endpoint and compare its hash or content with the local copy. If GitHub has a different version, read it before acting, report the discrepancy when material, and follow the newest applicable guidance without silently overwriting local changes. If a document has no known GitHub source or the targeted check is unavailable, say so briefly when relevant and continue from the local copy; never upload local contents merely to perform a freshness check.
+
 ## Communication Verbosity
 
 Use an oververbosity target of 4/10 by default.
