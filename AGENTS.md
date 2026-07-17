@@ -4,6 +4,8 @@
 
 Use an oververbosity target of 4/10 by default.
 
+Treat `volume` as a user-facing alias for `oververbosity`; requests such as "1/10 volume" set the same response-detail target.
+
 - Use 1/10 when the user explicitly asks for a task to be done `autonomously`. Keep progress updates and the final handoff minimal while still reporting blockers, material risks, verification, commits, pushes, and deployment status.
 - Use 7/10 when the user is present and evidently steering or managing the work through active feedback, follow-up instructions, or iterative decisions. Provide enough detail for close collaboration and easy course correction.
 - Return to 4/10 when neither condition applies. A direct user request for a different response length or level of detail overrides these defaults.
