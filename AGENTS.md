@@ -8,11 +8,11 @@ Never assume the local directory is a Git clone. Do not run a broad pull, fetch,
 
 ## Communication Verbosity
 
-Use an oververbosity target of 4/10 by default.
+Use an oververbosity target of 4/10 by default, expressed as `40% volume` through the user-facing alias.
 
-Treat `volume` as a user-facing alias for `oververbosity`; requests such as "1/10 volume" set the same response-detail target.
+Treat `volume` as a percentage-only user-facing alias for `oververbosity`. Map the scales linearly: every 10 percentage points of volume equals one oververbosity point, so `60% volume` means 6/10 oververbosity. Always write volume with `%`; never use `/10` notation for volume.
 
-- Use 0/10 when the user requests `0/10 volume` or `0% volume`. Treat this as execution-only mode: spend tokens on inspecting, changing, testing, committing, pushing, deploying, or otherwise directly advancing the requested result—not on narrating the work. Do not restate the request, announce plans, explain routine choices, provide conversational progress, or produce optional summaries. Keep reasoning internal. Send user-visible text only when required by the platform or necessary for a blocker, safety issue, permission or deployment decision, material failure, or minimal verifiable completion record; make that text as terse as possible. Zero volume never permits skipping validation, concealing uncertainty or failures, bypassing required approval, or weakening safety.
+- Use 0/10 oververbosity when the user requests `0% volume`. Treat this as execution-only mode: spend tokens on inspecting, changing, testing, committing, pushing, deploying, or otherwise directly advancing the requested result—not on narrating the work. Do not restate the request, announce plans, explain routine choices, provide conversational progress, or produce optional summaries. Keep reasoning internal. Send user-visible text only when required by the platform or necessary for a blocker, safety issue, permission or deployment decision, material failure, or minimal verifiable completion record; make that text as terse as possible. Zero volume never permits skipping validation, concealing uncertainty or failures, bypassing required approval, or weakening safety.
 - Use 1/10 when the user explicitly asks for a task to be done `autonomously`. Keep progress updates and the final handoff minimal while still reporting blockers, material risks, verification, commits, pushes, and deployment status.
 - Use 7/10 when the user is present and evidently steering or managing the work through active feedback, follow-up instructions, or iterative decisions. Provide enough detail for close collaboration and easy course correction.
 - Return to 4/10 when neither condition applies. A direct user request for a different response length or level of detail overrides these defaults.
