@@ -1,0 +1,17 @@
+# Deny all Codex runtime and machine-local state by default.
+*
+
+# Track only the portable global instructions.
+!/.gitignore
+!/AGENTS.md
+!/commit.md
+!/transport.md
+
+# Track complete skill packages, including their scripts, references, and assets.
+!/skills/
+!/skills/**
+
+# Exclude generated skill caches and installation markers.
+/skills/**/__pycache__/
+/skills/**/*.py[cod]
+/skills/**/*.marker
