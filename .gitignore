@@ -12,6 +12,10 @@
 !/skills/
 !/skills/**
 
+# Keep bundled/system and local personal skills out of this portable cookbook.
+/skills/.system/
+/skills/hatch-pet/
+
 # Exclude generated skill caches and installation markers.
 /skills/**/__pycache__/
 /skills/**/*.py[cod]
