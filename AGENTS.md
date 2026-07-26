@@ -23,6 +23,12 @@ Start substantial work in Plan mode before implementation. This includes new fea
 
 Plan mode may be skipped only for genuinely small, obvious, low-risk changes that are faster to implement than to formally plan, and for narrow time-sensitive bug fixes where delay matters. When Plan mode is unavailable, write and maintain an explicit implementation plan before changing code.
 
+## Discord Input Notifications
+
+During the first Plan mode phase of each task that enters Plan mode, ask once whether the user wants Discord notifications when their input is required. Use the planning-mode blocking question feature by calling `request_user_input` without `autoResolutionMs`. Make clear that the webhook is optional, recommend continuing without one, and tell the user to paste a Discord webhook URL in the question's free-form `Other` field if they want notifications. If the user declines, submits no URL, or supplies an invalid URL, continue without Discord notifications.
+
+Treat a supplied webhook URL as a task-scoped secret: keep it only for the current task; never echo, log, persist, commit, or expose it in command arguments or output; and do not send a test message. If progress later cannot safely continue without the user's input, use the webhook once to send only `<@939406522742611979> Codex needs your input in the current task. Please return to Codex.`, with allowed mentions restricted to Discord user ID `939406522742611979`, immediately before presenting the blocking question in Codex. Do not include task details, user data, secrets, or the question itself in the Discord message, and do not notify for non-blocking questions or routine updates. A failed notification must not delay the in-app question; report only a sanitized delivery failure and continue waiting in Codex.
+
 ## Jolli Memory
 
 Jolli is the durable development memory built from the repository's commits. Use its repository-provided skills whenever historical context can materially improve the work:
