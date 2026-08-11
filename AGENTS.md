@@ -1,5 +1,9 @@
 # Global Agent Instructions
 
+## Cookbook Location
+
+Install this cookbook directly at `~/.codex` and keep its global instructions, workflow references, and skills there only. Do not copy, symlink, or track cookbook files such as `AGENTS.md`, `commit.md`, or `transport.md` inside project repositories. Relative links in this file intentionally resolve within the user-level `.codex` checkout; project-specific guidance belongs in project-owned contribution or documentation files.
+
 ## Document Freshness
 
 At the start of every task, before implementation or any mutation, identify the local Markdown instructions and reference documents that may guide the work. Before relying on each document, perform a targeted read-only freshness check against that exact file on its known GitHub upstream and branch. For this cookbook, the canonical upstream is `bozo-industries/agent-cookbook` on `master`. For project documents, use an explicitly known source mapping or derive the repository, branch, and relative path from the local Git metadata when available.
@@ -43,11 +47,11 @@ Jolli complements current repository inspection; it does not replace reading the
 
 ## Git Workflow
 
-For any task that changes a Git worktree, read and follow [commit.md](commit.md). Repository-specific `AGENTS.md` files and contribution guides may add stricter requirements.
+For any task that changes a Git worktree, read and follow [commit.md](./commit.md) from the user-level `.codex` checkout. Project-owned contribution guides may add stricter requirements without copying the cookbook into that repository.
 
 ## Shell, SSH, and APIs
 
-For work involving shell boundaries, SSH, HTTP APIs, JSON payloads, encodings, or network retries, read and follow [transport.md](transport.md).
+For work involving shell boundaries, SSH, HTTP APIs, JSON payloads, encodings, or network retries, read and follow [transport.md](./transport.md) from the user-level `.codex` checkout.
 
 ## Continuous Instruction Improvement
 
