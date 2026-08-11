@@ -10,3 +10,5 @@ Portable Codex instructions and skill packages used across local projects.
 - `skills/` contains complete skill packages with their scripts, references, tests, and assets.
 
 The repository lives directly in `~/.codex`, but its deny-all `.gitignore` permits only these portable files. Credentials, configuration, sessions, logs, databases, caches, attachments, and other machine-local runtime state must never be tracked.
+
+Keep this cookbook user-level: do not copy, symlink, or commit its instruction files or skills inside individual project repositories. Projects may keep their own contribution and architecture documentation, while global cookbook references continue to resolve from `~/.codex`.
