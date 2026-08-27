@@ -57,6 +57,10 @@ For work involving shell boundaries, SSH, HTTP APIs, JSON payloads, encodings, o
 
 For work using KiCad's Python bindings or command-line validation, read and follow [kicad.md](./kicad.md) from the user-level `.codex` checkout.
 
+## Blender Automation
+
+For work using Blender's Python API or background rendering, read and follow [blender.md](./blender.md) from the user-level `.codex` checkout.
+
 ## Continuous Instruction Improvement
 
 When an execution error reveals a reusable pitfall in the environment, tooling, shell syntax, encoding, authentication, API behavior, Git workflow, or deployment process, fix the immediate problem and update the relevant agent instruction document during the same task. Record the preventive rule and correct technique, not a chronological incident report. Keep one-off outages, obvious typos, transient provider failures, secrets, credentials, and private payloads out of the instructions. If no existing document fits, create a small focused Markdown guide and reference it from this file. Validate, commit, and push instruction improvements as their own coherent checkpoint.
