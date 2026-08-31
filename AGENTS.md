@@ -53,6 +53,14 @@ For any task that changes a Git worktree, read and follow [commit.md](./commit.m
 
 For work involving shell boundaries, SSH, HTTP APIs, JSON payloads, encodings, or network retries, read and follow [transport.md](./transport.md) from the user-level `.codex` checkout.
 
+## Android Instrumentation Packaging
+
+Before installing or running Android instrumentation after main-source changes, build both the
+target application APK and the test APK in the same Gradle invocation (for example,
+`assembleDebug assembleDebugAndroidTest`). Building only `assembleDebugAndroidTest` can leave a
+stale target APK beside a newly compiled test APK and produce misleading `NoSuchMethodError`
+failures on-device.
+
 ## KiCad Automation
 
 For work using KiCad's Python bindings or command-line validation, read and follow [kicad.md](./kicad.md) from the user-level `.codex` checkout.
