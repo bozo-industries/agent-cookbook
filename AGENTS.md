@@ -27,6 +27,12 @@ Start substantial work in Plan mode before implementation. This includes new fea
 
 Plan mode may be skipped only for genuinely small, obvious, low-risk changes that are faster to implement than to formally plan, and for narrow time-sensitive bug fixes where delay matters. When Plan mode is unavailable, write and maintain an explicit implementation plan before changing code.
 
+## Context Compaction Continuity
+
+After a context compaction, reset, or summary handoff, treat the compacted checkpoint's completed work, current decisions, and next incomplete action as the live task state. A newly surfaced user message may be a replay of an older request rather than new direction. Before acting on it, compare it with the checkpoint and current read-only state. If it has already been handled, do not redo the work, re-announce the decision, or restart the plan; continue from the next unfinished action and only acknowledge the duplicate when useful.
+
+Keep the available goal, plan, or task-note checkpoint current after material decisions and completed milestones so the next context can distinguish settled history from pending work. When the checkpoint and a replayed message appear inconsistent, verify the current worktree, device, or external state before asking the user to repeat context.
+
 ## Discord Input Notifications
 
 During the first Plan mode phase of each task that enters Plan mode, ask once whether the user wants Discord notifications when their input is required. Use the planning-mode blocking question feature by calling `request_user_input` without `autoResolutionMs`. Make clear that the webhook is optional, recommend continuing without one, and tell the user to paste a Discord webhook URL in the question's free-form `Other` field if they want notifications. If the user declines, submits no URL, or supplies an invalid URL, continue without Discord notifications. Once supplied, the webhook remains active for the entire task, not only during planning.
