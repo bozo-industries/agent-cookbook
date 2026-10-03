@@ -67,6 +67,10 @@ target application APK and the test APK in the same Gradle invocation (for examp
 stale target APK beside a newly compiled test APK and produce misleading `NoSuchMethodError`
 failures on-device.
 
+## FreeCAD Automation
+
+For work using FreeCAD's Python API, geometric verification, or manufacturing exports, read and follow [freecad.md](./freecad.md) from the user-level `.codex` checkout.
+
 ## KiCad Automation
 
 For work using KiCad's Python bindings or command-line validation, read and follow [kicad.md](./kicad.md) from the user-level `.codex` checkout.
