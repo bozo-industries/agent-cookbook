@@ -7,3 +7,12 @@ the installed Blender version or its marketing name.  Query
 `bpy.types.RenderSettings.bl_rna.properties['engine'].enum_items` when a script
 must support an unknown installation.  In Blender 5.2, select Eevee with
 `scene.render.engine = "BLENDER_EEVEE"`.
+
+## Background Python failure propagation
+
+Launch validation and rendering scripts with `--python-exit-code 1` before
+`--python`. Without that option, Blender can print an uncaught Python exception
+and still exit with status zero. Require both a successful native exit and the
+expected fresh, source-bound report; neither process completion nor an old
+report proves the script passed. When collecting output before filtering it,
+capture the exit code immediately and propagate it after the reporting step.
