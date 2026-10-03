@@ -18,6 +18,7 @@ Use this guide for FreeCAD Python modeling, geometric verification, and manufact
 
 - Check both the native BRep and the serialized STL topology. Count boundary and non-manifold edges when a mesh fails. Do not assume finer tessellation can repair a geometric knife edge, or use a mesh splitter that silently fills holes as evidence of original closure.
 - Native bounding boxes can include untrimmed supporting-surface extrema. Use trimmed-face intersections, exact sections, or bounded tessellation to establish physical extents; report any difference rather than silently relaxing a size limit.
+- A valid BRep can contain zero-length degenerate edges whose `Curve` accessor raises an undefined-curve error. When locating a known nonzero feature such as a circular boss root, exclude zero-length edges before typed curve inspection and still require the expected feature count and dimensions. Do not blanket-catch errors on nondegenerate candidates or treat an incomplete feature search as success. Keep native validity and independent mesh checks as separate gates.
 - Reopen STEP and saved native files independently. Check valid closed solids, symmetric-difference volume, units and dimensions. Load STL through an independent reader without automatic hole repair; verify closure, winding, envelope and volume error.
 - Hardware envelope proxies must be labeled as proxies. A smooth nominal screw or insert is not a manufacturer thread/knurl model or a qualified tolerance stack.
 
