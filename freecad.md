@@ -34,6 +34,12 @@ Use this guide for FreeCAD Python modeling, geometric verification, and manufact
 - Direct STEP export can silently omit native offset-curve extrusion faces and return a valid but open partial shape. Require the expected solid, shell and face inventory as well as validity and closure. A copied shape converted with `toNurbs()` may provide a supported exchange representation, but publish it only after independent native/conversion/STEP geometry and inventory checks in new staging files. Preserve the analytic native mother for radius and wall measurements; conversion is not permission to repair missing geometry or relax dimensional gates.
 - Hardware envelope proxies must be labeled as proxies. A smooth nominal screw or insert is not a manufacturer thread/knurl model or a qualified tolerance stack.
 
+## Native projection and drawing artifacts
+
+- `TechDraw.projectToSVG()` returns a fragment that may contain several sibling groups. Wrap it in an SVG document before whole-document XML validation, and give unreferenced path IDs unique names when composing views. Save and hash expensive completed native projection output before downstream parsing or layout work so an adapter failure does not force a geometry rerun.
+- A syntactically valid SVG or successful raster export does not prove readable text. Offscreen Qt can start with no system fonts; register a verified local font, require the necessary glyphs, and inspect the actual raster. Check dimension arrows too, since renderer support for SVG marker features differs; explicit annotation polygons can avoid that dependency without changing projected geometry.
+- Preserve physical drawing scale across formats. For a raster generated at eight pixels per millimetre, set and independently reopen its resolution metadata at 8000 dots per metre. A pixel size alone does not establish an A4 sheet or a 1:1 print scale. Keep nominal reference drawings clearly separate from manufacturing approval.
+
 ## Assembly and service evidence
 
 - Model the actual installation and removal sequence, not only final poses. Include the complete key/driver body, socket engagement, approach, withdrawal, turning/reindexing space and relevant neighboring parts.
