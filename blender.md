@@ -16,3 +16,12 @@ and still exit with status zero. Require both a successful native exit and the
 expected fresh, source-bound report; neither process completion nor an old
 report proves the script passed. When collecting output before filtering it,
 capture the exit code immediately and propagate it after the reporting step.
+
+## Sibling Python helpers
+
+Blender's `--python` invocation may not add the script's directory to
+`sys.path`. Before importing a sibling helper, explicitly add the verified
+`Path(__file__).resolve().parent` directory. Inspect the helper for a guarded
+entry point so importing it cannot start a second build or overwrite outputs.
+Verify the import in the actual Blender runtime before an expensive render;
+do not change the current working directory or install a package to compensate.
