@@ -8,6 +8,7 @@ Use this guide for FreeCAD Python modeling, geometric verification, and manufact
 - For focused work, load a hash-bound saved document and copy its shapes. Build in a new document and fresh contained staging directory. Preserve the authoritative document and old release files until the complete replacement has passed its gates.
 - Keep exact producer/source hashes, parameters, native-tool version, and output hashes. Recheck inputs before publishing. A successful save or native process exit is not geometric verification.
 - Do not interchange native shape and mesh method signatures. In the bundled FreeCAD 1.1 Python API, use `shape.translate(App.Vector(dx, dy, dz))` but `mesh.translate(dx, dy, dz)`. For a rigid print orientation, copy the source mesh and apply a placement matrix so its original triangle topology is preserved; independently compare the serialized coordinates and indices against the declared transform.
+- Convert native mesh-point proxies to vectors explicitly with `App.Vector(point.x, point.y, point.z)`. A `MeshPoint` can expose coordinates without supporting the sequence constructor `App.Vector(point)`. Verify the conversion on one point before a long geometry audit; do not repeat completed native Boolean stages merely to diagnose a point-conversion failure.
 
 ## Boolean and local-clearance operations
 
