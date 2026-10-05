@@ -59,6 +59,10 @@ For any task that changes a Git worktree, read and follow [commit.md](./commit.m
 
 For work involving shell boundaries, SSH, HTTP APIs, JSON payloads, encodings, or network retries, read and follow [transport.md](./transport.md) from the user-level `.codex` checkout.
 
+## Browser State and Settings
+
+For browser automation that mixes accessibility and DOM controls, changes provider settings, or verifies their persistence, read and follow [browser.md](./browser.md) from the user-level `.codex` checkout.
+
 ## Android Instrumentation Packaging
 
 Before installing or running Android instrumentation after main-source changes, build both the
