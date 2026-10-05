@@ -1,0 +1,8 @@
+# Browser State and Settings Verification
+
+Use the documented browser API and the provider's supported API before lower-level UI techniques. Keep these rules alongside the platform's browser safety and confirmation requirements.
+
+1. Accessibility and DOM representations can expose different roles for the same control. A native accessibility checkbox may appear as a DOM button with `aria-pressed`. When using Playwright locators, derive their roles and names from a fresh DOM snapshot rather than copying a native accessibility role. Inspect the current representation after a selector mismatch instead of inventing variants or repeating the same action.
+2. Treat immediately changed controls as optimistic state until the provider confirms persistence. Wait for the save acknowledgement and verify the saved value after reloading or through an authoritative API before applying a dependent setting. Rapidly chaining dependent toggles can cancel, race, or conceal an unsaved change. A success message for a previous setting does not verify the next one.
+3. Reconcile a failed or uncertain settings write against durable state before retrying. If the setting remains disabled after a completed reload, target that known state; if the save is still pending, continue independent work instead of issuing another toggle that could undo it.
+4. After a full-page screenshot timeout, preserve the tab and try the documented normal-viewport capture. A screenshot failure alone does not establish disconnection or loss of page state. Save proof showing the relevant result and its page context; use the documented scrolling or screenshot options rather than rebuilding the browser session unnecessarily.
