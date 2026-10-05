@@ -25,3 +25,20 @@ Blender's `--python` invocation may not add the script's directory to
 entry point so importing it cannot start a second build or overwrite outputs.
 Verify the import in the actual Blender runtime before an expensive render;
 do not change the current working directory or install a package to compensate.
+
+## Recovering a graphics-backend render failure
+
+If a graphics backend crashes after saving a view, preserve that image and each
+already-saved scene. Verify the failed worker is terminal, then resume from the
+specific saved scene with Cycles and `scene.cycles.device = "CPU"` instead of
+rebuilding CAD, restarting the driver, or retrying the unchanged graphics backend.
+Compare loaded mesh coordinates, topology and poses with the source-bound geometry
+before rendering. Write fresh output names and record source-scene/output hashes.
+Keep process-tree resource limits, allow measured same-runtime headroom, and require
+both native success and a fresh render report. A crash module and diagnostics, not
+merely a peak near a memory limit, establish which failure layer is evidenced.
+
+For millimetre-coordinate engineering scenes, make illumination consistent with
+the camera and length scale. Area-light attenuation can leave an underside view
+unreadably dark. Use an appropriate ambient/directional light or scale-aware area
+lighting, then inspect the actual pixels; successful rendering alone is not visual QA.
