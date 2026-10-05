@@ -8,6 +8,7 @@ Portable Codex instructions and skill packages used across local projects.
 - `commit.md` defines the test, checkpoint, commit, push, and deploy workflow.
 - `transport.md` documents reliable shell, SSH, API, encoding, authentication, and retry practices.
 - `skills/` contains complete skill packages with their scripts, references, tests, and assets.
+- `skills/apk-reverse/` provides a workflow for analyzing Android APKs and verifying client-side changes on authorized targets; its MIT license is included with the skill.
 
 The repository lives directly in `~/.codex`, but its deny-all `.gitignore` permits only these portable files. Credentials, configuration, sessions, logs, databases, caches, attachments, and other machine-local runtime state must never be tracked.
 
