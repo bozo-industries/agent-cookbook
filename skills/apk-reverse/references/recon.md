@@ -78,6 +78,13 @@ targets are this shape; the packer material in this repository exists for the re
 
 Decide from sizes and structure, not from names:
 
+DEX index tables may legitimately be absent: a zero table count requires a zero
+offset. Do not classify such a secondary DEX as corrupt or silently exclude it.
+Validate count/offset pairs together and require the complete fixed-width span of
+each populated table to fit outside the header and within the file. Expose every
+unreadable DEX as incomplete coverage, compare the final file inventory, and use
+synthetic absent-table and overflowing-span fixtures when repairing a reader.
+
 ```bash
 unzip -l app.apk | sort -k1 -n | tail -20   # biggest entries: assets? libs? dex?
 ```

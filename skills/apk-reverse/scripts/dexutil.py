@@ -326,10 +326,21 @@ class Dex(object):
         size = len(self.d)
         if self.d[:4] != b"dex\n":
             problems.append("not a dex: magic=%r" % self.d[:4])
-        for key in ("string_ids_off", "type_ids_off", "proto_ids_off",
-                    "field_ids_off", "method_ids_off", "class_defs_off"):
+        # DEX permits absent index tables: count=0 requires offset=0. Rejecting
+        # that pair silently drops valid small secondary dex files from scans.
+        # For populated tables validate the entire fixed-width span, not just
+        # its first byte. See the Android runtime DEX header specification.
+        for key, stride in (("string_ids_off", 4), ("type_ids_off", 4),
+                            ("proto_ids_off", 12), ("field_ids_off", 8),
+                            ("method_ids_off", 8), ("class_defs_off", 32)):
             off = self.header[key]
-            if not (0 < off < size):
+            count = self.header[key.replace("_off", "_size")]
+            if count == 0:
+                if off != 0:
+                    problems.append("%s=0x%x but table count is zero" % (key, off))
+                continue
+            if not (self.header["header_size"] <= off < size
+                    and off + count * stride <= size):
                 problems.append("%s=0x%x out of range (file size %d)"
                                 % (key, off, size))
         declared = self.header["file_size"]
