@@ -21,6 +21,10 @@ Treat `volume` as a percentage-only user-facing alias for `oververbosity`. Map t
 - Use 7/10 when the user is present and evidently steering or managing the work through active feedback, follow-up instructions, or iterative decisions. Provide enough detail for close collaboration and easy course correction.
 - Return to 4/10 when neither condition applies. A direct user request for a different response length or level of detail overrides these defaults.
 
+## Product UI Copy
+
+Use concise, functional labels. Do not add decorative flavor text, cute taglines, aspirational card titles, or a subtitle beneath every heading. Add helper text only when it explains a necessary action, non-obvious behavior, or meaningful choice; remove text that repeats the label or surrounding controls. Keep Home/dashboard summaries compact and put detailed breakdowns on their dedicated screens. Do not invent mode names, confirmation dialogs, or explanatory notices for straightforward user-requested behavior.
+
 ## Planning
 
 Start substantial work in Plan mode before implementation. This includes new features, refactors, migrations, architectural changes, cross-cutting work, and any task with multiple meaningful steps, unclear scope, or important tradeoffs. Use the planning phase to inspect the relevant system, identify risks and dependencies, define verification, and resolve decisions that could materially change the implementation.
