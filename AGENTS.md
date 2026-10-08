@@ -51,6 +51,10 @@ Jolli is the durable development memory built from the repository's commits. Use
 
 Jolli complements current repository inspection; it does not replace reading the relevant code, diffs, tests, and documentation. Do not invoke it mechanically for trivial work with no relevant history. If a needed Jolli capability is unavailable or has no record, report that plainly and continue with direct repository evidence when possible.
 
+## Skill Validation
+
+The bundled `skills/.system/skill-creator/scripts/quick_validate.py` imports PyYAML. If the selected Python runtime lacks `yaml`, run it in an isolated environment with `uv run --with PyYAML --python <python-path> <validator-path> <skill-directory>` instead of changing the runtime-wide packages.
+
 ## Git Workflow
 
 For any task that changes a Git worktree, read and follow [commit.md](./commit.md) from the user-level `.codex` checkout. Project-owned contribution guides may add stricter requirements without copying the cookbook into that repository.
