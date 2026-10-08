@@ -1,0 +1,2 @@
+This skill adapts image-generation, reference-grounding, visual-continuity, and review concepts from the local hatch-pet skill.
+The adapted skill is distributed under the Apache License, Version 2.0; see LICENSE.txt.

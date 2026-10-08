@@ -1,0 +1,4 @@
+interface:
+  display_name: "Icon Generation"
+  short_description: "Create coherent single icons and icon sets"
+  default_prompt: "Use $icon-generation to create a coherent icon set from a description and references."
