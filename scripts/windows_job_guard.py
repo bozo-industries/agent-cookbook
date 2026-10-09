@@ -79,7 +79,7 @@ def check(ok):
 def reserve_failure(sample, *, starting=False):
     if sample['commitLimitBytes'] <= 0: return 'unavailable commit limit'
     reserve = sample['commitLimitBytes']-sample['committedBytes']
-    if sample['committedBytes']/sample['commitLimitBytes'] >= (.65 if starting else .75):
+    if sample['committedBytes']/sample['commitLimitBytes'] >= (.75 if starting else .85):
         return 'system commit percentage'
     if reserve < (16 if starting else 12)*GIB: return 'system commit reserve'
     if sample['availableBytes'] < (8 if starting else 4)*GIB: return 'available physical memory'
