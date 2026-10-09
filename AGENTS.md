@@ -83,6 +83,12 @@ target application APK and the test APK in the same Gradle invocation (for examp
 stale target APK beside a newly compiled test APK and produce misleading `NoSuchMethodError`
 failures on-device.
 
+Java source or target compatibility does not make newer JDK library APIs available on Android.
+Check the selected Android SDK/desugaring surface when adding test helpers; for example, use
+explicit UTF-8 `Files.readAllBytes`/`Files.write` for small text files when `Files.readString` or
+`Files.writeString` is absent from `android.jar`. Stream large media and model files instead of
+loading them wholesale merely to hash or copy them.
+
 ## FreeCAD Automation
 
 For work using FreeCAD's Python API, geometric verification, or manufacturing exports, read and follow [freecad.md](./freecad.md) from the user-level `.codex` checkout.
